@@ -1,0 +1,20 @@
+package com.thanh.ThiTA.service.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import com.thanh.ThiTA.model.Category;
+
+public class CategoryRowMapper implements RowMapper<Category> {
+    @Override
+    public Category mapRow(ResultSet rs, int rowNum) throws SQLException{
+        Category category = new Category();
+        category.setCategoryId(rs.getInt(0));
+        category.setCategoryName(rs.getString(1));
+        category.setDescription(rs.getString(2));
+        category.setPicture(rs.getString(3));
+        return category;
+    }
+}
