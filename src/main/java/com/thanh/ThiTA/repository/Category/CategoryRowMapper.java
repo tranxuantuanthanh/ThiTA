@@ -1,11 +1,11 @@
-package com.thanh.ThiTA.service.RowMapper;
+package com.thanh.ThiTA.repository.Category;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.thanh.ThiTA.model.Category;
+import com.thanh.ThiTA.entity.Category;
 
 public class CategoryRowMapper implements RowMapper<Category> {
     @Override

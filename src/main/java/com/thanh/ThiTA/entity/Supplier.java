@@ -1,7 +1,7 @@
-package com.thanh.ThiTA.model;
+package com.thanh.ThiTA.entity;
 
-public class Customer {
-    private int custId;
+public class Supplier {
+    private int supplierId;
     private String companyName;
     private String contactName;
     private String contactTitle;
@@ -11,14 +11,16 @@ public class Customer {
     private String postalCode;
     private String country;
     private String phone;
-    private String mobile;
     private String email;
     private String fax;
-    public int getCustId() {
-        return custId;
+    private String HomePage;
+    public Supplier() {
     }
-    public void setCustId(int custId) {
-        this.custId = custId;
+    public int getSupplierId() {
+        return supplierId;
+    }
+    public void setSupplierId(int supplierId) {
+        this.supplierId = supplierId;
     }
     public String getCompanyName() {
         return companyName;
@@ -74,12 +76,6 @@ public class Customer {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    public String getMobile() {
-        return mobile;
-    }
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
     public String getEmail() {
         return email;
     }
@@ -92,24 +88,10 @@ public class Customer {
     public void setFax(String fax) {
         this.fax = fax;
     }
-    public Customer(int custId, String companyName, String contactName, String contactTitle, String address,
-            String city, String region, String postalCode, String country, String phone, String mobile, String email,
-            String fax) {
-        this.custId = custId;
-        this.companyName = companyName;
-        this.contactName = contactName;
-        this.contactTitle = contactTitle;
-        this.address = address;
-        this.city = city;
-        this.region = region;
-        this.postalCode = postalCode;
-        this.country = country;
-        this.phone = phone;
-        this.mobile = mobile;
-        this.email = email;
-        this.fax = fax;
+    public String getHomePage() {
+        return HomePage;
     }
-    public Customer(){
-        
+    public void setHomePage(String homePage) {
+        HomePage = homePage;
     }
 }

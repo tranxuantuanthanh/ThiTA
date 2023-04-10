@@ -1,4 +1,4 @@
-package com.thanh.ThiTA.model;
+package com.thanh.ThiTA.entity;
 
 
 public class User {
