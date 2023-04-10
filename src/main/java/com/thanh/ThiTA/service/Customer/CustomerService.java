@@ -8,15 +8,15 @@ import com.thanh.ThiTA.entity.Customer;
 
 @Service
 public interface CustomerService {
-    public List<Customer> getAllCustomer();
+    List<Customer> getAllCustomer();
 
-    public List<Customer> findByName(String searchValue);
+    List<Customer> findByName(String searchValue);
 
-    public List<Customer> findByCompany(String searchValue);
+    List<Customer> findByCompany(String searchValue);
 
-    public int addCustomer(Customer customer);
+    int addCustomer(Customer customer);
 
-    public int editCustomer(Customer customer);
+    int editCustomer(int custId, Customer customer);
 
-    public int deleteCustomer(int CustomerId);
+    int deleteCustomer(int CustomerId);
 }

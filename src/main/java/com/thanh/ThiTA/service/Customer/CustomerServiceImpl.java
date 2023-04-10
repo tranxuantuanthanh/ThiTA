@@ -14,6 +14,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     CustomerRepository customerRepository;
+
     @Override
     public List<Customer> getAllCustomer() {
         return customerRepository.getAllCustomer();
@@ -22,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customer> findByName(String searchValue) {
         var list = customerRepository.findByName(searchValue);
-        if(list.size()>0){
+        if (list.size() > 0) {
             return list;
         }
         throw new NotFoundException("Not founded Customer");
@@ -31,7 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customer> findByCompany(String searchValue) {
         var list = customerRepository.findByCompany(searchValue);
-        if(list.size()>0){
+        if (list.size() > 0) {
             return list;
         }
         throw new NotFoundException("Not founded Customer");
@@ -43,7 +44,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public int editCustomer(Customer customer) {
+    public int editCustomer(int custId, Customer customer) {
+        customer.setCustId(custId);
         return customerRepository.editCustomer(customer);
     }
 
@@ -51,5 +53,5 @@ public class CustomerServiceImpl implements CustomerService {
     public int deleteCustomer(int customerId) {
         return customerRepository.deleteCustomer(customerId);
     }
-    
+
 }

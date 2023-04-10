@@ -9,7 +9,7 @@ import com.thanh.ThiTA.entity.Customer;
 
 public class CustomerRowMapper implements RowMapper<Customer> {
     @Override
-    public Customer mapRow(ResultSet rs, int rowNum) throws SQLException{
+    public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
         Customer customer = new Customer();
         customer.setCustId(rs.getInt(1));
         customer.setCompanyName(rs.getString(2));

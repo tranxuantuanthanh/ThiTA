@@ -13,4 +13,10 @@ public class CustomExceptionHandler {
     public ErrorRespone handlerNotFoundException(NotFoundException ex, WebRequest req){
         return new ErrorRespone(HttpStatus.NOT_FOUND, ex.getMessage());
     }
+
+    @ExceptionHandler(NotUniqueException.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public ErrorRespone handlerNotUniqueException(NotUniqueException ex, WebRequest req){
+        return new ErrorRespone(HttpStatus.UNPROCESSABLE_ENTITY, ex.getMessage());
+    }
 }

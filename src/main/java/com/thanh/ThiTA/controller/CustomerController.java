@@ -21,7 +21,7 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @GetMapping(path = "/list-customers")
+    @GetMapping(path = "/list")
     ResponseEntity<?> listCustomers() {
         var list = customerService.getAllCustomer();
         return ResponseEntity.ok(list);
@@ -35,25 +35,25 @@ public class CustomerController {
             return ResponseEntity.ok(customerService.findByName(contactName));
         }
         if (!companyName.isBlank()) {
-            return ResponseEntity.ok(customerService.findByName(companyName));
+            return ResponseEntity.ok(customerService.findByCompany(companyName));
         }
         var list = customerService.getAllCustomer();
         return ResponseEntity.ok(list);
     }
 
-    @PostMapping(path = "add-customer")
+    @PostMapping(path = "/add")
     ResponseEntity<?> addCustomer(@RequestBody Customer customer) {
         customerService.addCustomer(customer);
         return ResponseEntity.ok(ResponseFinal.INSERT);
     }
     
-    @PutMapping(path = "edit-customer")
-    ResponseEntity<?> editCustomer(@RequestBody Customer customer) {
-        customerService.editCustomer(customer);
+    @PutMapping(path = "/edit/{id}")
+    ResponseEntity<?> editCustomer(@PathVariable int id, @RequestBody Customer customer) {
+        customerService.editCustomer(id, customer);
         return ResponseEntity.ok(ResponseFinal.UPDATE);
     }
     
-    @DeleteMapping(path = "delete-customer/{id}")
+    @DeleteMapping(path = "delete/{id}")
     ResponseEntity<?> deleteCustomer(@PathVariable int id) {
         customerService.deleteCustomer(id);
         return ResponseEntity.ok(ResponseFinal.DELETE);

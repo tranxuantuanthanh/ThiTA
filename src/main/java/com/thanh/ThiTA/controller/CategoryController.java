@@ -22,32 +22,33 @@ import com.thanh.ThiTA.service.Category.CategoryService;
 @RequestMapping(path = "/api/category")
 @CrossOrigin()
 public class CategoryController {
-    
+
     @Autowired
     CategoryService categoryService;
 
-    @GetMapping(path = "/list-categories")
-    public List<Category> getAllCategories(){
+    @GetMapping(path = "/list")
+    public List<Category> getAllCategories() {
         return categoryService.getAllCategories();
     }
 
-    @GetMapping(path = "/find-categories")
-    public ResponseEntity<?> findCategories(@RequestParam(name = "keyword", required = false, defaultValue = "") String value){
+    @GetMapping(path = "/search")
+    public ResponseEntity<?> findCategories(@RequestParam(name = "keyword", required = false, defaultValue = "") String value) {
         return ResponseEntity.ok(categoryService.findCategories(value));
     }
 
-    @PostMapping(path = "/add-category")
-    public int addCategory(@RequestBody Category category){
+    @PostMapping(path = "/add")
+    public int addCategory(@RequestBody Category category) {
         return categoryService.addCategory(category.getCategoryName(), category.getDescription(), category.getPicture());
     }
 
-    @PutMapping(path = "/edit-category")
-    public int editCategory(@RequestBody Category category){
+    @PutMapping(path = "/edit/{id}")
+    public int editCategory(@PathVariable int id,@RequestBody Category category) {
+        category.setCategoryId(id);
         return categoryService.editCategory(category);
     }
 
-    @DeleteMapping(path = "/delete-category/{categoryId}")
-    public int deleteCategory(@PathVariable int categoryId){
-        return categoryService.deleteCategory(categoryId);
+    @DeleteMapping(path = "/delete/{id}")
+    public int deleteCategory(@PathVariable int id) {
+        return categoryService.deleteCategory(id);
     }
 }
